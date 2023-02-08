@@ -1,14 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 class cnn(nn.Module):
     def __init__(self):
         super(cnn,self).__init__()
         # input variable = 7
-        # hidden dim = [3,128]
+        # hidden dim = [32 ,128]
         self.cnn1 = nn.Sequential(
             nn.Conv1d(7,32,3,2,padding=1),
             nn.ReLU(),
@@ -37,6 +31,7 @@ class cnn(nn.Module):
         x = self.dropout(x)
 
         x = x.transpose(1,2)
+        
         x,_ = self.lstm(x)
         x = self.fn(x)
         x = self.tanh(x)
